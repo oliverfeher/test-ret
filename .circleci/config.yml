@@ -6,4 +6,6 @@ jobs:
   build:
     steps:
       - checkout
-      - git push ssh://codeserver.dev.758edd83-8141-44c9-b0ed-2323996a3ea5@codeserver.dev.758edd83-8141-44c9-b0ed-2323996a3ea5.drush.in:2222/~/repository.git
+      # ssh://codeserver.dev.53ca31b2-20d6-4710-9e4f-ff1f750f4219@codeserver.dev.53ca31b2-20d6-4710-9e4f-ff1f750f4219.drush.in:2222/~/repository.git -b master ret-test
+      - run: |
+          git push ssh://codeserver.dev.758edd83-8141-44c9-b0ed-2323996a3ea5@codeserver.dev.758edd83-8141-44c9-b0ed-2323996a3ea5.drush.in:2222/~/repository.git
