@@ -7,5 +7,14 @@ jobs:
     steps:
       - checkout
       # ssh://codeserver.dev.53ca31b2-20d6-4710-9e4f-ff1f750f4219@codeserver.dev.53ca31b2-20d6-4710-9e4f-ff1f750f4219.drush.in:2222/~/repository.git -b master ret-test
-      - run: |
-          git push ssh://codeserver.dev.758edd83-8141-44c9-b0ed-2323996a3ea5@codeserver.dev.758edd83-8141-44c9-b0ed-2323996a3ea5.drush.in:2222/~/repository.git
+      - run:
+          name: Authenticate with Pantheon's CLI using a machine token
+          command: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
+      - run:
+          name: Checkout site repository from Pantheon
+          command: |
+            # Ensure that there's a Pantheon repo locally. If one was not
+            # restored from cache, clone it fresh.
+            git clone https://github.com/oliverfeher/test-ret.git
+
+
